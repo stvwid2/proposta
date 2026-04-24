@@ -5,9 +5,114 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projeto Barbearia</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#0b0b0f;
+  color:#fff;
+}
 
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+nav {
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  background:#000;
+}
+
+nav ul {
+  display:flex;
+  gap:15px;
+  list-style:none;
+}
+
+nav li {
+  cursor:pointer;
+}
+
+.page {
+  display:none;
+  padding:80px 20px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.active { display:block; }
+
+.hero h1 {
+  font-size:2.5em;
+  background:linear-gradient(90deg,#00c853,#00e5ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.card {
+  background:#111;
+  padding:25px;
+  border-radius:12px;
+  margin:20px 0;
+}
+
+/* imagens normais */
+.card img {
+  width:100%;
+  border-radius:10px;
+  margin-top:15px;
+}
+
+.result {
+  color:#00c853;
+  margin-top:10px;
+  display:block;
+}
+
+.btn {
+  background:#00c853;
+  padding:12px 25px;
+  border-radius:8px;
+  display:inline-block;
+  margin-top:20px;
+  cursor:pointer;
+  text-decoration:none;
+  color:#fff;
+}
+
+.icons img {
+  width:30px;
+  margin:5px;
+}
+
+.gift {
+  background:linear-gradient(45deg,#00c853,#00e5ff);
+  padding:50px;
+  border-radius:20px;
+  text-align:center;
+  font-size:24px;
+  cursor:pointer;
+  margin-top:30px;
+}
+
+.hidden { display:none; }
+
+/* WHATSAPP SEM FUNDO */
+.whatsapp-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  z-index: 999;
+}
+
+.whatsapp-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin: 0;
+  border-radius: 0;
+}
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -109,21 +214,36 @@
 
 <div id="final" class="page">
   <h2>Vamos crescer sua barbearia?</h2>
-  <a href="https://wa.me/5531972114553" target="_blank" class="whatsapp-link">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
+  <a class="btn" href="https://wa.me/5531972114553" target="_blank">
     Falar no WhatsApp
   </a>
 </div>
 
-<!-- BOTÃO WHATSAPP CORRIGIDO -->
-<a href="https://wa.me/5531972114553" class="cta" target="_blank">
+<!-- BOTÃO WHATSAPP -->
+<a href="https://wa.me/5531972114553" target="_blank" class="whatsapp-link">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
-<!-- SCRIPTS NO FINAL (melhor prática) -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="script.js"></script>
+<script>
+function showPage(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+}
+
+function abrirPresente(){
+  document.getElementById("presente").style.display="block";
+}
+
+new Chart(document.getElementById('grafico1'), {
+  type:'bar',
+  data:{
+    labels:['Antes','Depois'],
+    datasets:[{
+      data:[3,15]
+    }]
+  }
+});
+</script>
 
 </body>
 </html>
